@@ -8,10 +8,14 @@ public class Main {
 
     // Program entry point
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("3musk.txt"));
+        System.out.printf("Type in a filename: ");
+
+        Scanner fnsc = new Scanner(System.in);
+        Scanner sc = new Scanner(new File(fnsc.nextLine()));
+
         List<String> init_list = new ArrayList<>();
 
-        System.out.println("Reading data...");
+        System.out.println("\nReading data...");
         double stTime = System.nanoTime();
         while (sc.hasNextLine()) {
             init_list.add(sc.nextLine());
