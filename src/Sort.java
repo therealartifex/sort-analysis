@@ -32,21 +32,16 @@ class Merge extends Sort {
         int k = left;
         int num = rightEnd - left + 1;
 
-        while(left <= leftEnd && right <= rightEnd)
-            if(a[left].compareTo(a[right]) <= 0)
-                tmp[k++] = a[left++];
-            else
-                tmp[k++] = a[right++];
+        while(left <= leftEnd && right <= rightEnd) tmp[k++] = (a[left].compareTo(a[right]) <= 0) ? a[left++] : a[right++];
 
-        while(left <= leftEnd)    // Copy rest of first half
-            tmp[k++] = a[left++];
-
-        while(right <= rightEnd)  // Copy rest of right half
-            tmp[k++] = a[right++];
+		// Copy rest of first half
+        while(left <= leftEnd) tmp[k++] = a[left++];
+		
+		// Copy rest of right half
+        while(right <= rightEnd) tmp[k++] = a[right++];
 
         // Copy tmp back
-        for(int i = 0; i < num; i++, rightEnd--)
-            a[rightEnd] = tmp[rightEnd];
+        for(int i = 0; i < num; i++, rightEnd--) a[rightEnd] = tmp[rightEnd];
     }
 }
 
